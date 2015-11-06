@@ -1,0 +1,46 @@
+<div th:fragment="nav" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!--<div th:fragment="nav" xmlns:sec="http://www.springframework.org/security/tags">-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" th:href="@{/}"><span th:text="#{menu.main.home}">Home</span></a>
+                <ul class="nav navbar-nav">
+                    <li><a href="#" th:href="@{/expense/all}">Expenses</a></li>
+                    <li><a href="#" th:href="@{/expense/new}">Create Expense</a></li>
+                    <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/user/create}">Register</a></li>
+                    <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Login</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="#" th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </div>
+
+            <!--<div sec:authorize="isAuthenticated()">isAuthenticated</div>-->
+            <!--<div sec:authorize="isAnonymous()">isAnonymous</div>-->
+            <!--Logged user: <span sec:authentication="name">Bob</span>-->
+
+
+
+
+            <!--<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
+            <!--<form th:action="@{/logout}" method="post">-->
+                <!--<input type="submit" value="Sign Out"/>-->
+            <!--</form>-->
+
+        </div>
+    </nav>
+    <p sec:authorize="isAuthenticated()" class="help-block">Logged user: <span sec:authentication="name"></span></p>
+    <!--<p sec:authorize="isAuthenticated()" class="help-block">Logged user: <span sec:authentication="principal"></span></p>-->
+
+    <div class="jumbotron">
+        <div class="row text-center">
+            <div class="">
+                <h2>Test ł ó ę</h2>
+
+                <!--<h3>Spring Boot Web App</h3>-->
+            </div>
+        </div>
+        <div class="row text-center">
+            <img src="../../static/images/NewBannerBOOTS_2.png" width="400"
+                 th:src="@{/images/NewBannerBOOTS_2.png}"/>
+        </div>
+    </div>
+</div>
